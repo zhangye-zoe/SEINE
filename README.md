@@ -1,4 +1,4 @@
-# Ongoing update
+# Some documents are still being organized, and I will continue to provide updates.
 
 # SEINE
 ## Installation

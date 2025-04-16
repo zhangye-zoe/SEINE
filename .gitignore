@@ -1,0 +1,70 @@
+# custom
+*.json
+*.log*
+*.npz
+try.*
+
+# Pytorch
+*.pth
+
+# Image
+*.png
+*.jpg
+*.tif
+
+# Numpy
+*.npy
+
+# Dataset
+data/
+
+# Dataset symbolic link
+/data*
+
+# Vscode
+__vscode__
+
+# Python
+__pycache__
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# work dir
+work_dirs*/
+collect*/
+
+# jupyter related files
+.ipynb_checkpoints/
+
+# compressed files
+*.zip
+*.rar
+*.tar
+
+# visualization files
+.*_show
+
+# pickle sequence file
+*.p
+
+# root folder txt files
+/*.txt
+
+# jupyter notebook files
+.ipynb_checkpoint/

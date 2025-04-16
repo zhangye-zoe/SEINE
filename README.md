@@ -1,58 +1,80 @@
-# Tissue-Image-Segmentation
+# SEINE: Segmentation and Explanation of Interactive Nuclei Embeddings
 
-unofficial re-implementation of popular tissue image segmentation models
+SEINE is a framework for nuclei segmentation and reasoning in histopathological images. It supports training, evaluation, and interpretation of deep learning models for instance-level nuclei analysis.
 
-Support Model:
+## 📁 Dataset Preparation
 
-- [x] UNet
-- [x] Dist
-- [x] DCAN
-- [x] MicroNet
-- [x] FullNet
-- [x] CDNet
+Please refer to the detailed instructions in [docs/data_prepare.md](docs/data_prepare.md) for dataset organization and formatting.
 
-## Dataset Prepare
+For preprocessing procedures such as patch extraction, data splitting, and structural encoding, please check [docs/data.ipynb](docs/data.ipynb), which provides step-by-step processing code and explanations.
 
-Please check [this doc](docs/data_prepare.md)
+---
 
-Supported Dataset:
+## 🔧 Installation
 
-- [x] MoNuSeg;
-- [x] CoNSeP;
-- [x] CPM17;
-- [x] CoNIC;
+We recommend using a conda virtual environment.
 
-## Installation
+```bash
+# 1. Create environment
+conda create -n seine python=3.7 -y
+conda activate seine
 
-1. Install MMCV-full (Linux recommend): `pip install MMCV-full==1.3.13`;
-2. Install requirements package: `pip install -r requirements.txt`;
-3. Download tiseg: `git clone https://github.com/sennnnn/Torch-Image-Segmentation`;
-4. Install tiseg: `pip install -e .`;
+# 2. Install PyTorch (ensure CUDA 11.1 support)
+pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 \
+    -f https://download.pytorch.org/whl/torch_stable.html
 
-## Usage
+# 3. Install MMCV-full (Linux recommended)
+pip install mmcv-full==1.3.13
 
-### Training
+# 4. Install required packages
+pip install -r requirements.txt
 
-```Bash
-# single gpu training
-python tools/train.py [config_path]
-# multiple gpu training
-./tools/dist_train.sh [config_path] [num_gpu]
-# demo (cdnet for CPM17 dataset on 1 gpu)
-python tools/train.py configs/unet/unet_vgg16_radam-lr5e-4_bs16_256x256_7k_cpm17.py
-# demo (unet for CPM17 dataset on 4 gpu)
-./tools/dist_train.py configs/unet/unet_vgg16_radam-lr5e-4_bs16_256x256_7k_cpm17.py 4
+# 5. Clone and install this repo
+git clone https://github.com/zhangye-zoe/SEINE.git
+cd SEINE
+pip install -e .
+```
+✅ The code has been tested and runs successfully on both NVIDIA RTX 3090 and A100 GPUs.
+
+## 🚀 Usage
+
+### 🔧 Training
+
+To start training:
+
+```bash
+# Replace [config_path] with your actual config file
+CUDA_VISIBLE_DEVICES=0 python tools/train.py [config_path]
 ```
 
-# Evaluation
+### 📊 Evaluation
 
-```Bash
-# single gpu evaluation
-python tools/test.py [config_path]
-# multiple gpu evaluation
-./tools/dist_test.py [config_path] [num_gpu]
+To evaluate a trained model:
+
+```bash
+# Replace [config_path] and [checkpoint] with your config file and checkpoint path
+CUDA_VISIBLE_DEVICES=0 python tools/test.py [config_path] [checkpoint]
 ```
 
-## Thanks
+## 📂 Project Structure 
 
-This repo follow the design mode of [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) & [detectron2](https://github.com/facebookresearch/detectron2).
+```
+SEINE/
+├── configs/            # Configuration files
+├── data/               # Dataset loading & interface
+├── docs/               # Documentation and data preparation guides
+├── tiseg/              # Core model architectures and components
+├── tools/              # Training, testing, and utilities
+├── requirements.txt    # Python dependency list
+└── README.md           # Project overview
+
+```
+
+## 🙏 Acknowledgements
+
+This project is inspired by the design pattern of  
+[Tissue-Image-Segmentation](https://github.com/sennnnn/Tissue-Image-Segmentation). We thank their contribution to open-source medical image analysis.
+
+## 📬 Contact
+
+For questions, please feel free to contact the author via GitHub Issues or email.

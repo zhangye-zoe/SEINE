@@ -1,4 +1,4 @@
-# SEINE: Segmentation and Explanation of Interactive Nuclei Embeddings
+# SEINE: Structure Encoding and Interaction Network for Nuclei Segmentation
 
 SEINE is a framework for nuclei segmentation and reasoning in histopathological images. It supports training, evaluation, and interpretation of deep learning models for instance-level nuclei analysis.
 
